@@ -14,40 +14,46 @@ class TypePDO {
 
 
 	 public function getPPK($nameTable = "ppk") {
-       	 $stmt = $this->myDb->prepare("SELECT * FROM $nameTable");
+     try{
+       	$stmt = $this->myDb->prepare("SELECT * FROM $nameTable");
 
-      	 $stmt->execute();
+      	$stmt->execute();
 
-         if($stmt->rowCount() > 0) {
-           	$listPPK = $stmt->fetchAll();
-           	$stmt->closeCursor();
-           	return $listPPK;
-         } else {
-            $stmt->closeCursor();
-            return false;
-        }
+        $listPPK = $stmt->fetchAll();
+        $stmt->closeCursor();
+        return $listPPK;
+      } catch (Throwable $t) {
+          return false;
+           // Executed only in PHP 7, will not match in PHP 5
+      } catch (Exception $e) {
+          return false;
+           // Executed only in PHP 5, will not be reached in PHP 7
+      }
     }
 
 
       public function getPPKWhere($nameTable,$requestColumnIsOn,$requestValueColumnIsOn) {
-       	 $stmt = $this->myDb->prepare("SELECT * FROM $nameTable WHERE $requestColumnIsOn = :requestValueColumnIsOn");
-         $stmt->bindParam(":requestValueColumnIsOn",$requestValueColumnIsOn);
+        try{
+         	$stmt = $this->myDb->prepare("SELECT * FROM $nameTable WHERE $requestColumnIsOn = :requestValueColumnIsOn");
+          $stmt->bindParam(":requestValueColumnIsOn",$requestValueColumnIsOn);
 
-      	 $stmt->execute();
+        	$stmt->execute();
 
-         if($stmt->rowCount() > 0) {
-           	$listPPK = $stmt->fetchAll();
-           	$stmt->closeCursor();
-           	return $listPPK;
-         } else {
-            $stmt->closeCursor();
-            return false;
+          $listPPK = $stmt->fetchAll();
+          $stmt->closeCursor();
+          return $listPPK;
+        } catch (Throwable $t) {
+          return false;
+           // Executed only in PHP 7, will not match in PHP 5
+        } catch (Exception $e) {
+          return false;
+           // Executed only in PHP 5, will not be reached in PHP 7
         }
     }
 
 
-	 private function initDB($type="mysql",$nameDB = "laravel",$host = "localhost",$adminDB = "root",$passwordDB = "") {
-	  	 $this->myDb = new PDO("{$type}:host={$host};dbname={$nameDB}",$adminDB,$passwordDB,
+	 private function initDB($typeHostNameDB,$adminDB = "root",$passwordDB = "") {
+	  	 $this->myDb = new PDO($typeHostNameDB,$adminDB,$passwordDB,
 	  	  [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
 	  	 );
 	 }

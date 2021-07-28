@@ -9,10 +9,10 @@
 */
 
 // CONNECT DB ДАННЫЕ ДЛЯ ПОДКЛЮЧЕНИЯ
-define("NAME_DB", "laravel"); // ИМЯ БАЗЫ ДАННЫХ
-define("HOST", "localhost"); // ХОСТ
-define("ADMIN_DB", "root"); // ЛОГИН
-define("PASSWORD_DB", ""); // ПАРОЛЬ
+define("NAME_DB", "master"); // ИМЯ БАЗЫ ДАННЫХ
+define("HOST", "COMPUTER"); // ХОСТ
+define("ADMIN_DB", "iDeath"); // ЛОГИН
+define("PASSWORD_DB", "1"); // ПАРОЛЬ
 
 // CHARACTERS DB (TABLE,COLUMN). ДАННЫЕ НАЗВАНИЕ ТАБЛИЦЫ И СТРУКТУРЫ (СТОЛБЦЫ) ДЛЯ ТОГО ЧТОБЫ ЗАБИРАТЬ ДАННЫЕ
 // СТОЛБЦЫ КОТОРЫЕ НУЖНЫ, ЕСЛИ ЖЕ НЕКОТОРЫХ СТОЛБЦОВ НЕТ, ТО ИГНОРИРУЙТЕ ИХ.

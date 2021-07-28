@@ -35,7 +35,16 @@ date_default_timezone_set('Europe/Kiev');
 // PATH JSON 
 $path = "google-service-account.json";
 
-$myDb = new TypePDO($typePDO,$nameDB,$host,$adminDB,$passwordDB);
+$typeHostNameDB = "";
+if($typePDO == "mysql") {
+  $typeHostNameDB = "{$typePDO}:host={$host};dbname={$nameDB}";
+} elseif ($typePDO == "sqlsrv") {
+  $typeHostNameDB = "{$typePDO}:Server={$host};Database={$nameDB}";	
+} else {
+  $typeHostNameDB = "{$typePDO}:host={$host};dbname={$nameDB}";
+}
+
+$myDb = new TypePDO($typeHostNameDB,$adminDB,$passwordDB);
 
 $getListPPK = false;
 if($requestColumnIsOn == "UNKNOWN" || $requestColumnIsOn == "unknown") {
