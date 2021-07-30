@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '894aea77437f167977ba131b8136c7189208d8cd',
+        'reference' => '340f6402548ac320081a01ffb988510ce045290c',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '894aea77437f167977ba131b8136c7189208d8cd',
+            'reference' => '340f6402548ac320081a01ffb988510ce045290c',
             'dev_requirement' => false,
         ),
         'brick/math' => array(
@@ -224,6 +224,15 @@
             'install_path' => __DIR__ . '/../ramsey/uuid',
             'aliases' => array(),
             'reference' => 'cd4032040a750077205918c86049aa0f43d22947',
+            'dev_requirement' => false,
+        ),
+        'rebasedata/php-client' => array(
+            'pretty_version' => 'v1.0.6',
+            'version' => '1.0.6.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rebasedata/php-client',
+            'aliases' => array(),
+            'reference' => '557b3197bd9843499d0308ea3f6e95c6e6ecc321',
             'dev_requirement' => false,
         ),
         'rhumsaa/uuid' => array(

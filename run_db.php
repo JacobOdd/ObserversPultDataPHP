@@ -47,10 +47,10 @@ if($typePDO == "mysql") {
 $myDb = new TypePDO($typeHostNameDB,$adminDB,$passwordDB);
 
 $getListPPK = false;
-if($requestColumnIsOn == "UNKNOWN" || $requestColumnIsOn == "unknown") {
-	$getListPPK = $myDb->getPPK($nameTableDB);
-} else {
+if($requestColumnIsOn == $isOn) {
 	$getListPPK = $myDb->getPPKWhere($nameTableDB,$requestColumnIsOn,$requestValueColumnIsOn);
+} else {
+	$getListPPK = $myDb->getPPK($nameTableDB);
 }
 
 if($getListPPK != false) {
@@ -78,7 +78,7 @@ if($getListPPK != false) {
 		}
 
 		if(!isset($isOn_column)) {
-			$isOn_column = false;
+			$isOn_column = true;
 		}
 
 		if(!isset($latitude_column)) {
@@ -107,7 +107,11 @@ if($getListPPK != false) {
 				$isOn_column = false;
 			}
 		} else {
-			$isOn_column = false;
+			$isOn_column = true;
+		}
+
+		if(!$isOn_column) {
+			continue;
 		}
 
 		$timestamp = time() + 60*3; // now + 3 minutes

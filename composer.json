@@ -2,6 +2,7 @@
     "require": {
         "google/cloud-firestore": "^1.19",
         "google/protobuf": "^3.17",
-        "grpc/grpc": "^1.38"
+        "grpc/grpc": "^1.38",
+        "rebasedata/php-client": "1.*"
     }
 }

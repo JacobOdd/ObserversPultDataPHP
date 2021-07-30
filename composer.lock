@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e79a4f9c5e4236e8d1653c4b22c6dd76",
+    "content-hash": "79dc4dc7d1841e5c0635554fc3fc7ebe",
     "packages": [
         {
             "name": "brick/math",
@@ -1269,6 +1269,47 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "rebasedata/php-client",
+            "version": "v1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rebasedata/php-client.git",
+                "reference": "557b3197bd9843499d0308ea3f6e95c6e6ecc321"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rebasedata/php-client/zipball/557b3197bd9843499d0308ea3f6e95c6e6ecc321",
+                "reference": "557b3197bd9843499d0308ea3f6e95c6e6ecc321",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "ext-zip": "*",
+                "phpunit/phpunit": "^6.5"
+            },
+            "suggest": {
+                "ext-zip": "Allows compressed up- and downloads"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RebaseData\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "RebaseData API client for PHP",
+            "support": {
+                "issues": "https://github.com/rebasedata/php-client/issues",
+                "source": "https://github.com/rebasedata/php-client/tree/v1.0.6"
+            },
+            "time": "2020-04-10T21:20:27+00:00"
         },
         {
             "name": "rize/uri-template",

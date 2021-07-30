@@ -1,0 +1,19 @@
+{
+    "name": "rebasedata/php-client",
+    "type": "library",
+    "description": "RebaseData API client for PHP",
+    "require": {
+        "php": "^7.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5",
+        "ext-zip": "*"
+    },
+    "suggest": {
+        "ext-zip": "Allows compressed up- and downloads"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": { "RebaseData\\": "src/" }
+    }
+}

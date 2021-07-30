@@ -23,6 +23,7 @@ class ComposerStaticInitaae061c285330f6f1ee4961d9beb7f7f
         'R' => 
         array (
             'Rize\\' => 5,
+            'RebaseData\\' => 11,
             'Ramsey\\Uuid\\' => 12,
             'Ramsey\\Collection\\' => 18,
         ),
@@ -73,6 +74,10 @@ class ComposerStaticInitaae061c285330f6f1ee4961d9beb7f7f
         'Rize\\' => 
         array (
             0 => __DIR__ . '/..' . '/rize/uri-template/src/Rize',
+        ),
+        'RebaseData\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rebasedata/php-client/src',
         ),
         'Ramsey\\Uuid\\' => 
         array (
