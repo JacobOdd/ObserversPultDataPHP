@@ -1,11 +1,7 @@
 <?php
 
-//namespace ZOV;
-
 require_once "DB/cParadox.php";
-require_once "MyFirebase.php";
 require_once "settings/settings.php";
-
 
 // CHARACTERS DB (TABLE,COLUMN).
 $nameTableDB = NAME_TABLE_DB;
@@ -107,7 +103,7 @@ if ($pdx->Open($nameTableDB)) {
                 continue;
             }
 
-            $timestamp = time() + 60*3; // now + 3 minutes
+          /*  $timestamp = time() + 60*3; // now + 3 minutes
 
             $result = $myFirebase->setDocument(
                                 $ppk_id_column,
@@ -122,7 +118,7 @@ if ($pdx->Open($nameTableDB)) {
 
             if(!$result) {
                 $iterationResultFalier++;   
-            }
+            }*/
 
         } // end for
 

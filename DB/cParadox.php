@@ -1,7 +1,5 @@
 <?php
 
-//namespace ZOV;
-
 class cParadox { 
     //members
     var $m_pxdoc = NULL;
