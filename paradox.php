@@ -122,7 +122,7 @@ if ($pdx->Open($nameTableDB)) {
             $dataPost = json_encode(array("data" => $dataPost));
 
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL,"http://localhost:80/paradox.php");
+            curl_setopt($ch, CURLOPT_URL,"http://localhost:2222/paradox.php");
             curl_setopt($ch, CURLOPT_POSTFIELDS, $dataPost);
             curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
             
@@ -131,7 +131,7 @@ if ($pdx->Open($nameTableDB)) {
 
             if ($server_output == "OK") { 
                 $response["message"] = "Ok";
-              //  $response["http_code"] = "200";
+                $response["http_code"] = "200";
                 echo json_encode($response);
             }  else {
                 $response["http_code"] = "500";
