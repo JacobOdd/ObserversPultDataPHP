@@ -19,24 +19,19 @@ $type_pult = TYPE_PULT_FIREBASE;
 $requestColumnIsOn = IS_EXISTS_IS_ON_COLUMN_DB; // Значение должно совпадать с isOn если есть такой столбец
 
 $values = $_POST["values"];
-// Установка timezone Киев как основа
-date_default_timezone_set('Europe/Kiev');
-
-$path = "google-service-account.json";
 
 $pdx = new cParadox();
 $pdx->m_default_field_value = "?";//" ";
 
 if ($pdx->Open($nameTableDB)) {
-     $tot_rec = $pdx->GetNumRecords();
+    $tot_rec = $pdx->GetNumRecords();
     if ($tot_rec) {
 
-        $myFirebase = new MyFirebase($path); 
+        $dataPost = array();
+        $dataPost["array_ppk"] = array();
 
-        $iterationResultFalier = 0;
-        $lenghtGetListPPK = 0;
         for($rec=0; $rec<$tot_rec; $rec++) {
-            $lenghtGetListPPK++;
+            //$lenghtGetListPPK++;
            /*
             print_r($item);
             echo "<tr>";
@@ -103,33 +98,52 @@ if ($pdx->Open($nameTableDB)) {
                 continue;
             }
 
-          /*  $timestamp = time() + 60*3; // now + 3 minutes
+            $resultItem[$ppk_id] = $ppk_id_column;
+            $resultItem[$address] = $address_column;
+            $resultItem[$isOn] = $isOn_column;
+            $resultItem[$number_object] = $number_object_column;
+            $resultItem[$latitudes] = $latitude_column;
+            $resultItem[$longitudes] = $longitude_column;  
 
-            $result = $myFirebase->setDocument(
-                                $ppk_id_column,
-                                $address_column,
-                                $isOn_column,
-                                $number_object_column,
-                                $latitude_column,
-                                $longitude_column,
-                                $type_pult,
-                                $timestamp
-                            );
-
-            if(!$result) {
-                $iterationResultFalier++;   
-            }*/
-
+            array_push($dataPost["array_ppk"], $resultItem);
         } // end for
 
-        if($iterationResultFalier == $lenghtGetListPPK) {
-            $response["http_code"] = "500";
-            echo json_encode($response);
+      //  echo  $dataPost["dataPost"][0][$address];
+        if(count($dataPost["array_ppk"]) > 0) 
+        {
+            $dataPost["ppk_id"] = $ppk_id;
+            $dataPost["address"] = $address;
+            $dataPost["isOn"] = $isOn;
+            $dataPost["number_object"] = $number_object;
+            $dataPost["latitude"] = $latitudes;
+            $dataPost["longitude"] = $longitudes; 
+            $dataPost["type_pult"] = $type_pult;
+
+            $dataPost = json_encode(array("data" => $dataPost));
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL,"http://localhost:80/paradox.php");
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $dataPost);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+            
+            $server_output = curl_exec($ch);
+            curl_close ($ch);
+
+            if ($server_output == "OK") { 
+                $response["message"] = "Ok";
+              //  $response["http_code"] = "200";
+                echo json_encode($response);
+            }  else {
+                $response["http_code"] = "500";
+                echo json_encode($response);
+            }
         } else {
-            $response["http_code"] = "200";
-            echo json_encode($response);
+             $response["message"] = "Empty Data";
+             $response["http_code"] = "200";
+             echo json_encode($response); 
         }
     } else {
+        $response["http_code"] = "200";
         $response["message"] = "Empty Table";
         echo json_encode($response);
     }
