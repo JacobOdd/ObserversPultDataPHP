@@ -19,13 +19,12 @@ class MyFirebase {
 	    $this->collection = $firestore->collection('ppk');
 	}
 
-	public function setDocument($ppk_id,$address,$isOn,$number_object,$latitude,$longitude,$type_pult,$timestamp) {
+	public function setDocument($ppk_id,$address,$number_object,$latitude,$longitude,$type_pult,$timestamp) {
 		try {
 			$ppk = $this->collection->document($type_pult."_".$ppk_id);
 
 			$ppk->set([
 				'address' => $address,
-				'isOn' => $isOn,
 				'latitude' => $latitude,
 				'longitude' => $longitude,
 				'number_object' => $number_object,

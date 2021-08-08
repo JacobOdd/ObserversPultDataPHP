@@ -13,7 +13,6 @@ $getData = json_decode(file_get_contents("php://input"));
 $dataMassive = $getData->data->array_ppk;
 $ppk_id = $getData->data->ppk_id;
 $address = $getData->data->address;
-$isOn = $getData->data->isOn;
 $number_object = $getData->data->number_object;
 $latitude = $getData->data->latitude;
 $longitude =$getData->data->longitude;
@@ -34,7 +33,6 @@ foreach($dataMassive as $item) {
            
     $ppk_id_column = $item->$ppk_id;
     $address_column = $item->$address;
-    $isOn_column = $item->$isOn;
     $number_object_column = $item->$number_object;
     $latitude_column = $item->$latitude;
     $longitude_column = $item->$longitude;
@@ -44,7 +42,6 @@ foreach($dataMassive as $item) {
     $result = $myFirebase->setDocument(
                                 $ppk_id_column,
                                 $address_column,
-                                $isOn_column,
                                 $number_object_column,
                                 $latitude_column,
                                 $longitude_column,

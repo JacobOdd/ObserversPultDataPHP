@@ -119,7 +119,6 @@ if($getListPPK != false) {
 		$result = $myFirebase->setDocument(
 				$ppk_id_column,
 				$address_column,
-				$isOn_column,
 				$number_object_column,
 				$latitude_column,
 				$longitude_column,
