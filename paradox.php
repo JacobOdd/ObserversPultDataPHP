@@ -100,7 +100,6 @@ if ($pdx->Open($nameTableDB)) {
 
             $resultItem[$ppk_id] = $ppk_id_column;
             $resultItem[$address] = $address_column;
-            $resultItem[$isOn] = $isOn_column;
             $resultItem[$number_object] = $number_object_column;
             $resultItem[$latitudes] = $latitude_column;
             $resultItem[$longitudes] = $longitude_column;  
@@ -113,7 +112,6 @@ if ($pdx->Open($nameTableDB)) {
         {
             $dataPost["ppk_id"] = $ppk_id;
             $dataPost["address"] = $address;
-            $dataPost["isOn"] = $isOn;
             $dataPost["number_object"] = $number_object;
             $dataPost["latitude"] = $latitudes;
             $dataPost["longitude"] = $longitudes; 
